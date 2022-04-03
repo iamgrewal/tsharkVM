@@ -1,7 +1,13 @@
 # tshark ELK VM appliance
 
-This project builds virtual machine which can be used for analytics of tshark -T ek (ndjson) output.
-The virtual appliance is built using vagrant, which builds Debian with pre-installed and pre-configured ELK stack. 
+This project builds virtual machine which can be used for analytics of tshark -T ek (ndjson) output. The virtual appliance is built using vagrant, which builds Debian 10 with pre-installed and pre-configured ELK stack.
+
+After the VM is up, the process is simple:
+
+decoded pcaps (tshark -T ek output / ndjson) are sent over TCP/17570 to the VM
+ELK stack in VM will process and index the data
+Kibana is running in VM and can be accessed on http://127.0.0.1:15601/app/kibana#/dashboards
+
 
 After the VM is up, the process is simple:
 * decoded pcaps (`tshark -T ek output` / ndjson) are sent over `TCP/17570` to the VM
@@ -11,7 +17,7 @@ After the VM is up, the process is simple:
 ## Instuctions to build VM from Ubuntu desktop
 ### Clone source code
 ```bash
-git clone https://github.com/H21lab/tsharkVM.git
+git clone https://github.com/iamgrewal/tsharkVM.git
 ```
 
 ### Build tshark VM
@@ -119,17 +125,5 @@ simple-NIDS is licensed under the AGPLv3 (Free Open Source GNU Affero GPL v3.0).
 
 Additionally refer to individual licenses and terms of used of installed software (see licenses for Wireshark, Elastic and other). 
 
-## Attribution
-Special thanks to people who helped with the Wireshark development or otherwise contributed to this work:
-* Anders Broman
-* [Alexis La Goutte](https://twitter.com/alagoutte)
-* Christoph Wurm 
-* [Dario Lombardo](https://twitter.com/crondaemon1)
-* [Vic Hargrave](https://twitter.com/vichargrave)
-
-Example pcap in ./Traces subfolder was downloaded from https://wiki.wireshark.org/SampleCaptures
-
-Created by Martin Kacer
-
-Copyright 2021 H21 lab, All right reserved, https://www.h21lab.com
+ 
 
